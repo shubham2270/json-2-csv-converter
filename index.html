@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>JSON 2 CSV</title>
+</head>
+<body>
+    
+    <div class="main_wrapper">
+        <div class="sub_wrapper">
+            <div class="input_wrapper">
+                <div>
+                    <h2>Paste JSON Data</h2>
+                    <textarea type="text" id="jsonInput" rows="20"></textarea>
+                </div>
+                <div>
+                    <h2>Result Data</h2>
+                    <textarea type="text" id="csvInput" rows="20"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_wrapper">
+            <button class="btn btn_convert" id="convert">Convert JSON 2 CSV</button>
+            <button class="btn btn_reset" id="clear">Clear Fields</button>
+         </div>
+    <!-- <input type="file" name="inpFile" id="inpFile"> -->
+      <!-- <button type="button" id="btn_upload">upload</button> -->
+      <!-- <button type="button" id="btn">Save File</button> -->
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
