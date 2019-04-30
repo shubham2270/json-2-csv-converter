@@ -21,14 +21,23 @@ const jsonInput = document.getElementById("jsonInput");
 const csvInput = document.getElementById('csvInput');
 const convertBtn = document.getElementById('convert');
 const clearBtn = document.getElementById('clear');
+const downloadBtn = document.getElementById('download');
 
 const convertJsonToCsv = () => {
-    //Receives JSON data and parses it into object
+    if (jsonInput.value === '') { //Checks for empty field
+        alert('Please enter JSON data');
+    } else {
+          //Receives JSON data and parses it into object
     const jsonData = jsonInput.value;
-    const obj = JSON.parse(jsonData);
-    console.log(obj)
-
-
+    try {
+        var obj = JSON.parse(jsonData);
+    }
+        catch(err) {
+            alert('Input provided is not a valid JSON Data! Try Again!');
+            jsonInput.value = '';
+        }
+    }
+  
     //stores the headings as array
     const heading = []
 
@@ -56,12 +65,28 @@ const convertJsonToCsv = () => {
     const blob = new Blob([outputData], {type: 'text/plain;charset=utf-8'});
     let reader = new FileReader();
     reader.addEventListener('loadend', () => {
-       console.log(reader.result);
        csvInput.value = reader.result
     })
     reader.readAsText(blob);
+}
 
+//Clears the input field
+const clearInputField = () => {
+    jsonInput.value = '';
+    csvInput.value = '';
+}
+
+const downloadConvertedFile = () => {
+    if(csvInput.value === '') {
+        alert('First enter JSON data and convert to download!')
+    } else {
+        const blobCSV = new Blob([csvInput.value], {type: 'text/plain;charset=utf-8'});
+        saveAs(blobCSV , 'yourFile.csv')
+    }
+   
 }
 
 convertBtn.addEventListener('click', convertJsonToCsv);
+clear.addEventListener('click', clearInputField);
+downloadBtn.addEventListener('click', downloadConvertedFile);
 
